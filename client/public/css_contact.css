@@ -25,6 +25,7 @@
     align-items: center;
 }
 
+<<<<<<< HEAD
 .table-fill {
     width: 65vw;
 }
@@ -33,3 +34,8 @@
     max-height: 50vw;
 }
 
+=======
+.table-fill{
+    display: block;
+}
+>>>>>>> c0eda6fc0e5da5cd89b862ac3562c5329a7d979e
