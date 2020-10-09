@@ -1,10 +1,21 @@
+.header {
+    margin-top:2%;
+}
+
+.contact_head h1{
+    text-align: center;
+    margin:1% 0;
+    color:#17252A;
+    font-size: 2vw;
+}
+
 .contact_links {
     width: 50vw;
     margin: 0 auto;
 }
 
 .contact_icon {
-    width: 50px;
+    width: 40px;
     margin-right: 3%;
 }
 
@@ -13,3 +24,12 @@
     justify-content: center;
     align-items: center;
 }
+
+.table-fill {
+    width: 65vw;
+}
+
+.table-hover {
+    max-height: 50vw;
+}
+
