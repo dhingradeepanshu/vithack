@@ -1,0 +1,15 @@
+.contact_links {
+    width: 50vw;
+    margin: 0 auto;
+}
+
+.contact_icon {
+    width: 50px;
+    margin-right: 3%;
+}
+
+.contact_f {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
