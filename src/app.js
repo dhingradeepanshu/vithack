@@ -28,7 +28,13 @@ app.get("/about",(req,res)=>{
     res.render("about");
 })
 
+app.get("/contact",(req,res) => {
+    res.render("contact");
+})
 
+app.get("/notif",(req,res) => {
+    res.render("notif");
+})
 
 app.post('/region/:id',post, (req,res) => {
     
