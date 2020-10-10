@@ -49,6 +49,7 @@
                 <option value="Active" disabled="disabled">Active</option>
             </select>        <br>
             <button type="submit" class="submit_reg">Upload</button>
+            <p class="success_resp"></p>
         </form>
         <canvas id="myChart2"></canvas>
     </div>
@@ -109,7 +110,18 @@
 
         const resp = await axios.post("/register",req_obj)
 
-        console.log(resp.data)
+        if(resp.data.error) {
+            document.getElementsByClassName("success_resp")[0].innerHTML = "Registration unsuccessful. Please try again.";
+            document.getElementsByClassName("success_resp")[0].style.color = "red";
+            document.getElementsByClassName("success_resp")[0].style.fontWeight = "bold";
+
+        }
+        else {
+            document.getElementsByClassName("success_resp")[0].innerHTML = "You have successfully registered.";
+            document.getElementsByClassName("success_resp")[0].style.color = "green";
+            document.getElementsByClassName("success_resp")[0].style.fontWeight = "bold";
+
+        }
     })
 
     function display_states_death1(e_labels,e_death,country)
