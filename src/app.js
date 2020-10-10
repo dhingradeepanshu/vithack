@@ -180,7 +180,7 @@ app.post('/region/:id',post, (req,res) => {
 
 app.post('/register',post,async(req,res)=>{
     try{
-        await User.save(req.body);
+        await User.save(req.body.pat_id, req.body.rep, req.body.age, req.body.gender, req.body.state, req.body.status);
         res.send({
             success:"Successfully Registered"
         })
