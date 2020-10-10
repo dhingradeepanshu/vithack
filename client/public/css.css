@@ -487,6 +487,7 @@ input[type=text] {
     background:#FFFFFF;
     padding:20px;
     width:20%;
+    overflow: hidden;
     text-align:center;
     vertical-align:middle;
     font-weight:300;

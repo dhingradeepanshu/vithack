@@ -9,7 +9,7 @@ async function contact_details(){
     for(i=0;i<contact_data.data.data.notifications.length;i++)
     {
         var loc="<td>"+contact_data.data.data.notifications[i].title+"</td>";
-        var num="<td class='contact-link'>"+contact_data.data.data.notifications[i].link+"</td>";
+        var num="<td class='contact-link'><a href=" + contact_data.data.data.notifications[i].link + " target='_blank'>" + contact_data.data.data.notifications[i].link + "</a></td>";
         var fdata=loc+num;
         var ffdata="<tr>"+fdata+"</tr>";
         $(table).find('tbody').append(ffdata);
