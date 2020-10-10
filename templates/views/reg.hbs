@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>COVID-19 Tracker | Upto date news and data for COVID-19</title>
+	<meta name="google-site-verification" content="K-Q0bR-_1KcxcaYMX19M2U4sdoxACyZynFq1XfaAKtY" />
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport">
+	<meta name="description" content="Creating awareness about COVID-19 and displaying data of confirmed, deaths, active and recovered cases in several countries including India and it's states.">
+	<meta name="keywords" content="Covid, Covid 19, Coronavirus, Active, Deaths, Recovered, Confirmed, India, World, Coronavirus news, Covid 19 updates, daily graphs, cummulative graphs, covid news today, covid India, covid china">
+	<link rel="shortcut icon" href="public/covid.png">
+	<link rel="stylesheet" href="public/reg_css.css">
+	<link href="https://fonts.googleapis.com/css2?family=Muli&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+<body onload="f()">
+	<div class="header">
+        <h1>COVID-19 Tracker</h1>
+    </div>
+    <div class="contact_head">
+        <h1>Register Deceased</h1>
+    </div>
+	
+    <form class="new_form">
+        <input type="text" class="new_inp" name="pat_id" placeholder="Patient ID">
+        <br>
+        <input type="date" class="new_inp" name="rep" placeholder="Reported On">
+        <br>
+        <input type="number" class="new_inp" name="age" placeholder="Age estimate" min="1">
+        <br>
+        <select name="gender" class="new_inp" placeholder="Gender">
+            <option value="Gender">Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <br>
+        <select name="state" class="new_inp" placeholder="State" id="state">
+            <option value="State">State</option>
+        </select>        
+        <br>
+        <select name="status" class="new_inp" placeholder="Status">
+            <option value="Status">Status</option>
+            <option value="Deceased" >Deceased</option>
+            <option value="Recovered" disabled="disabled">Recovered</option>
+            <option value="Active" disabled="disabled">Active</option>
+        </select>        <br>
+        <button type="submit" class="submit_reg">Upload</button>
+    </form>
+</body>
+</html>
+
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/maps.js"></script>
+<script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+<script src="https://www.amcharts.com/lib/4/geodata/data/countries2.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<script type="text/javascript" src="public/js.js"></script>
+<script type="text/javascript" src="public/globe.js"></script>
+<script type="text/javascript" src="public/search_bar.js"></script>
+<script type="text/javascript" src="public/search_bar.js"></script>
+<script type="text/javascript" src="public/charts.js"></script>
+<script type="text/javascript" src="public/hide.js"></script>
+<script type="text/javascript" src="public/news.js"></script>
+<script type="text/javascript" src="public/state.js"></script>
+<script type="text/javascript" src="public/country_world.js"></script>
+<script type="text/javascript" src="public/daily_graph.js"></script>
+<script type="text/javascript" src="public/notif.js"></script>
+
+<script>
+    //let countries = []
+    async function f() {
+        const contact_data = await axios.get('https://api.rootnet.in/covid19-in/hospitals/beds')
+        console.log(contact_data)
+        for(i=0;i<contact_data.data.data.regional.length;i++)
+        {
+            var loc=`<option value="${contact_data.data.data.regional[i].state}">${contact_data.data.data.regional[i].state}</option>`;
+            $('.new_form').find('#state').append(loc);
+        }
+    }
+
+    var new_form = document.getElementsByClassName("new_form")[0]
+
+    new_form.addEventListener("submit",async (e) => {
+        e.preventDefault()
+        var pat_id = document.getElementsByClassName("new_inp")[0];
+        var rep = document.getElementsByClassName("new_inp")[1];
+        var age = document.getElementsByClassName("new_inp")[2];
+        var gender = document.getElementsByClassName("new_inp")[3];
+        var state = document.getElementsByClassName("new_inp")[4];
+        var status = document.getElementsByClassName("new_inp")[5];
+
+        var req_obj = {
+            pat_id,
+            rep,
+            age,
+            gender,
+            state,
+            status
+        }
+
+        console.log(req_obj)
+
+        const resp = await axios.post("/register",req_obj)
+
+        console.log(resp)
+    })
+
+    
+
+</script>
