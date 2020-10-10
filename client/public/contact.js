@@ -1,4 +1,6 @@
 let contact_button = document.getElementsByClassName("button_new")[0]
+let heading = document.getElementsByClassName("heading")[0]
+
 var countries = []
 async function contact_details(){
     // e.preventDefault();
@@ -36,6 +38,8 @@ var button=document.getElementsByTagName("form")[0];
     const { regional } = contact_data.data.data.contacts
     console.log(regional)
     const find = regional.find((loc) => { return loc.loc == placex })
+    let msg = "The contact number for " + find.loc + " is " + find.number + " ."
+    heading.innerHTML = msg
     console.log(find)
   }
 

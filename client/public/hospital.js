@@ -5,12 +5,24 @@ async function contact_details(){
     const contact_data = await axios.get('https://api.rootnet.in/covid19-in/hospitals/beds')
     console.log(contact_data)
     var i;
-    var table=document.getElementsByClassName('table-fill')[0];
-    var tbody=document.getElementsByClassName('table-hover')[0].innerHTML="";
+    var table=document.getElementsByClassName('table-fill')[1];
+    var tbody=document.getElementsByClassName('table-hover')[1].innerHTML="";
     console.log(contact_data.data.data.regional)
     for(i=0;i<contact_data.data.data.regional.length;i++)
     {
         countries.push(contact_data.data.data.regional[i].state)
+        let datefmt = new Date(contact_data.data.data.regional[i].asOn)
+        var date="<td>"+ datefmt.getDate() +"/" +(datefmt.getMonth() + 1) +"/" +datefmt.getFullYear();+"</td>";
+        var loc="<td>"+contact_data.data.data.regional[i].ruralBeds+"</td>";
+        var name="<td>"+contact_data.data.data.regional[i].ruralHospitals+"</td>";
+        var city="<td>"+contact_data.data.data.regional[i].state+"</td>";
+        var ownership="<td>"+contact_data.data.data.regional[i].totalBeds+"</td>";
+        var admissionCapacity="<td>"+contact_data.data.data.regional[i].totalHospitals+"</td>";
+        var hospitalBeds="<td>"+contact_data.data.data.regional[i].urbanBeds+"</td>";
+        var hospitalUrban="<td>"+contact_data.data.data.regional[i].urbanHospitals+"</td>";
+        var fdata=date+loc+name+city+ownership+admissionCapacity+hospitalBeds+hospitalUrban ;
+        var ffdata="<tr>"+fdata+"</tr>";
+        $(table).find('tbody').append(ffdata);
     }
 
 }
@@ -30,7 +42,20 @@ var button=document.getElementsByTagName("form")[0];
     const { regional } = contact_data.data.data
     console.log(regional)
     const find = regional.find((loc) => { return loc.state == placex })
-    console.log(find)
+    var table=document.getElementsByClassName('table-fill')[0];
+    var tbody=document.getElementsByClassName('table-hover')[0].innerHTML="";
+    let datefmt = new Date(find.asOn)
+    var date="<td>"+ datefmt.getDate() +"/" +(datefmt.getMonth() + 1) +"/" +datefmt.getFullYear();+"</td>";
+    var loc="<td>"+find.ruralBeds+"</td>";
+    var name="<td>"+find.ruralHospitals+"</td>";
+    var city="<td>"+find.state+"</td>";
+    var ownership="<td>"+find.totalBeds+"</td>";
+    var admissionCapacity="<td>"+find.totalHospitals+"</td>";
+    var hospitalBeds="<td>"+find.urbanBeds+"</td>";
+    var hospitalUrban="<td>"+find.urbanHospitals+"</td>";
+    var fdata=date+loc+name+city+ownership+admissionCapacity+hospitalBeds+hospitalUrban ;
+    var ffdata="<tr>"+fdata+"</tr>";
+    $(table).find('tbody').append(ffdata);
   }
 
   function autocomplete(inp, arr) {

@@ -402,6 +402,11 @@ input[type=text] {
     animation: float 5s infinite;
   }
 
+  .tablesearch{
+    box-shadow: none !important;
+    background-color: transparent !important;
+  }
+
   .table-hover
   {
     display:block;
