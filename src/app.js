@@ -36,6 +36,10 @@ app.get("/hospital",(req,res) => {
     res.render("hospital")
 })
 
+app.get("/medical",(req,res) => {
+    res.render("medical")
+})
+
 app.get("/notif",(req,res) => {
     res.render("notif");
 })
