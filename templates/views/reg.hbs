@@ -108,7 +108,7 @@
 
         console.log(req_obj)
 
-        const resp = await axios.post("/register",req_obj)
+        const resp = await axios.post("https://covidport.herokuapp.com/register",req_obj)
 
         if(resp.data.error) {
             document.getElementsByClassName("success_resp")[0].innerHTML = "Registration unsuccessful. Please try again.";
