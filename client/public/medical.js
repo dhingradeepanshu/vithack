@@ -43,6 +43,8 @@ var button=document.getElementsByTagName("form")[0];
     const find_col = find.find((loc) => { return loc.name == placex[1] })
     var table=document.getElementsByClassName('table-fill')[0];
     var tbody=document.getElementsByClassName('table-hover')[0].innerHTML="";
+    var head = '<tr> <th class="text-left">State</th> <th class="text-left" >Name</th> <th class="text-left" >City</th> <th class="text-left" >Ownership</th> <th class="text-left" >Admission Capacity</th> <th class="text-left" >Hospital Beds</th> </tr>'
+    $(table).find('tbody').append(head);
     var loc="<td>"+find_col.state+"</td>";
     var name="<td>"+find_col.name+"</td>";
     var city="<td>"+find_col.city+"</td>";

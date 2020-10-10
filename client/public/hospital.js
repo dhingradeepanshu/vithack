@@ -44,6 +44,8 @@ var button=document.getElementsByTagName("form")[0];
     const find = regional.find((loc) => { return loc.state == placex })
     var table=document.getElementsByClassName('table-fill')[0];
     var tbody=document.getElementsByClassName('table-hover')[0].innerHTML="";
+    var head = '<tr> <th class="text-left">Date</th> <th class="text-left">Rural Beds</th> <th class="text-left" >Rural Hospitals</th> <th class="text-left" >State</th> <th class="text-left" >Total Beds</th> <th class="text-left" >Total Hospitals</th> <th class="text-left" >Urban Beds</th> <th class="text-left" >Urban Hospitals</th> </tr>'
+    $(table).find('tbody').append(head);
     let datefmt = new Date(find.asOn)
     var date="<td>"+ datefmt.getDate() +"/" +(datefmt.getMonth() + 1) +"/" +datefmt.getFullYear();+"</td>";
     var loc="<td>"+find.ruralBeds+"</td>";
