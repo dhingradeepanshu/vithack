@@ -10,22 +10,28 @@
 }
 
 .contact_links {
-    border:solid 2px;
     width:350px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .contact_icon {
     width: 40px;
-    margin-right: 3%;
+    margin-right: 6%;
 }
 
 .contact_f {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     position: relative;
     top:25%;
-    padding: 0 15%;
+    padding: 0 5%;
+    flex-direction: row;
+}
+
+.contact_f {
+    text-align: left;
 }
 
 .table-fill {
