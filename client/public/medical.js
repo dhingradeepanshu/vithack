@@ -32,13 +32,16 @@ var button=document.getElementsByTagName("form")[0];
   async function search_place()
   {
     var placex=document.getElementsByTagName('input')[0].value;
-    console.log(placex)
+    placex = placex.split("-")
+    placex[0] = placex[0].trim()
+    placex[1] = placex[1].trim()
     const contact_data = await axios.get('https://api.rootnet.in/covid19-in/hospitals/medical-colleges')
     console.log(contact_data)
-    const { regional } = contact_data.data.data.contacts
-    console.log(regional)
-    const find = regional.find((loc) => { return loc.loc == placex })
-    console.log(find)
+    const { medicalColleges } = contact_data.data.data
+    console.log(medicalColleges)
+    const find = medicalColleges.filter((loc) => { return loc.state == placex[0] })
+    const find_col = find.find((loc) => { return loc.name == placex[1] })
+    console.log(find_col)
   }
 
   function autocomplete(inp, arr) {
