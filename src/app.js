@@ -2,6 +2,8 @@ const express = require('express')
 const path = require('path')
 const hbs = require('hbs')
 const bp=require('body-parser')
+require('./db/mongoose.js')
+const User = require('./db/usermodel.js')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -170,6 +172,20 @@ app.post('/region/:id',post, (req,res) => {
     
 
 
+})
+
+app.post('/register',post,async(req,res)=>{
+    try{
+        await User.save(req.body);
+        res.send({
+            success:"Successfully Registered"
+        })
+    }
+    catch(e){
+        res.send({
+            error:"Error Occured"
+        })
+    }
 })
 
 
