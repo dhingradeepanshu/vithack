@@ -32,6 +32,10 @@ app.get("/contact",(req,res) => {
     res.render("contact");
 })
 
+app.get("/hospital",(req,res) => {
+    res.render("hospital")
+})
+
 app.get("/notif",(req,res) => {
     res.render("notif");
 })
