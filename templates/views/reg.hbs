@@ -22,24 +22,25 @@
         <h1>Register Deceased</h1>
     </div>
 	
-    <form class="new_form">
-        <input type="text" class="new_inp" name="pat_id" placeholder="Patient ID">
+    <form class="new_form" autocomplete="off">
+        <input type="text" class="new_inp" name="pat_id" placeholder="Patient ID" required>
         <br>
-        <input type="date" class="new_inp" name="rep" placeholder="Reported On">
+        <input type="date" class="new_inp" name="rep" placeholder="Reported On" required>
         <br>
-        <input type="number" class="new_inp" name="age" placeholder="Age estimate" min="1">
+        <input type="number" class="new_inp" name="age" placeholder="Age estimate" min="1" required>
         <br>
-        <select name="gender" class="new_inp" placeholder="Gender">
+        <select name="gender" class="new_inp" placeholder="Gender" required>
             <option value="Gender">Gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
+            <option value="Other">Other</option>
         </select>
         <br>
-        <select name="state" class="new_inp" placeholder="State" id="state">
+        <select name="state" class="new_inp" placeholder="State" id="state" required>
             <option value="State">State</option>
         </select>        
         <br>
-        <select name="status" class="new_inp" placeholder="Status">
+        <select name="status" class="new_inp" placeholder="Status" required>
             <option value="Status">Status</option>
             <option value="Deceased" >Deceased</option>
             <option value="Recovered" disabled="disabled">Recovered</option>
@@ -71,7 +72,7 @@
     //let countries = []
     async function f() {
         const contact_data = await axios.get('https://api.rootnet.in/covid19-in/hospitals/beds')
-        console.log(contact_data)
+        console.log(contact_data.data)
         for(i=0;i<contact_data.data.data.regional.length;i++)
         {
             var loc=`<option value="${contact_data.data.data.regional[i].state}">${contact_data.data.data.regional[i].state}</option>`;
@@ -83,12 +84,12 @@
 
     new_form.addEventListener("submit",async (e) => {
         e.preventDefault()
-        var pat_id = document.getElementsByClassName("new_inp")[0];
-        var rep = document.getElementsByClassName("new_inp")[1];
-        var age = document.getElementsByClassName("new_inp")[2];
-        var gender = document.getElementsByClassName("new_inp")[3];
-        var state = document.getElementsByClassName("new_inp")[4];
-        var status = document.getElementsByClassName("new_inp")[5];
+        var pat_id = document.getElementsByClassName("new_inp")[0].value;
+        var rep = document.getElementsByClassName("new_inp")[1].value;
+        var age = document.getElementsByClassName("new_inp")[2].value;
+        var gender = document.getElementsByClassName("new_inp")[3].value;
+        var state = document.getElementsByClassName("new_inp")[4].value;
+        var status = document.getElementsByClassName("new_inp")[5].value;
 
         var req_obj = {
             pat_id,
@@ -103,7 +104,7 @@
 
         const resp = await axios.post("/register",req_obj)
 
-        console.log(resp)
+        console.log(resp.data)
     })
 
 
