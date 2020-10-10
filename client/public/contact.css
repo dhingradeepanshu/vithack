@@ -10,9 +10,9 @@
 }
 
 /* .contact_links {
-  border: solid 2px;
-  width: 350px;
-} */
+    border: solid 2px;
+    width: 350px;
+  } */
 ul {
   position: absolute;
   top: 85%;
@@ -118,4 +118,7 @@ ul li:nth-child(5) a:hover .fa {
   display: flex;
   justify-content: space-evenly;
   margin-top: 3%;
+}
+.search_globe {
+  margin-top: 10%;
 }
