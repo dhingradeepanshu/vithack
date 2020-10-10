@@ -46,6 +46,10 @@ app.get("/notif",(req,res) => {
     res.render("notif");
 })
 
+app.get("/reg",(req,res) => {
+    res.render("reg");
+})
+
 app.post('/region/:id',post, (req,res) => {
     
     var d = new Date();
