@@ -907,3 +907,38 @@ a
 }
 
 /*-----------------*/
+
+/*----------Hack buttons----------------*/
+
+.hack_buttons_wrap {
+  margin: 6% 0 2% 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hack_buttons a {
+  width:15vw;
+  text-decoration: none;
+  background-color: #17252A;
+  color: #feffff;
+  border-radius: 5px;
+  border:solid 3px #feffff;
+  transition: all 0.2s ease;
+  padding: 2% 1%;
+  box-shadow: -5px 1px 10px rgba(0,0,0,0.7);
+  font-weight: bold;
+}
+
+.hack_buttons a:hover {
+  background-color: #feffff;
+  color: #17252A;
+  border: solid 2px #17252A;
+}
+
+.hack_buttons {
+  margin-bottom: 2%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
