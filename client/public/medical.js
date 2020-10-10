@@ -5,8 +5,8 @@ async function contact_details(){
     const contact_data = await axios.get('https://api.rootnet.in/covid19-in/hospitals/medical-colleges')
     console.log(contact_data.data.data)
     var i;
-    var table=document.getElementsByClassName('table-fill')[0];
-    var tbody=document.getElementsByClassName('table-hover')[0].innerHTML="";
+    var table=document.getElementsByClassName('table-fill')[1];
+    var tbody=document.getElementsByClassName('table-hover')[1].innerHTML="";
     
     for(i=0;i<contact_data.data.data.medicalColleges.length;i++)
     {
@@ -41,6 +41,17 @@ var button=document.getElementsByTagName("form")[0];
     console.log(medicalColleges)
     const find = medicalColleges.filter((loc) => { return loc.state == placex[0] })
     const find_col = find.find((loc) => { return loc.name == placex[1] })
+    var table=document.getElementsByClassName('table-fill')[0];
+    var tbody=document.getElementsByClassName('table-hover')[0].innerHTML="";
+    var loc="<td>"+find_col.state+"</td>";
+    var name="<td>"+find_col.name+"</td>";
+    var city="<td>"+find_col.city+"</td>";
+    var ownership="<td>"+find_col.ownership+"</td>";
+    var admissionCapacity="<td>"+find_col.admissionCapacity+"</td>";
+    var hospitalBeds="<td>"+find_col.hospitalBeds+"</td>";
+    var fdata=loc+name+city+ownership+admissionCapacity+hospitalBeds;
+    var ffdata="<tr>"+fdata+"</tr>";
+    $(table).find('tbody').append(ffdata);
     console.log(find_col)
   }
 
