@@ -180,12 +180,40 @@ app.post('/region/:id',post, (req,res) => {
 
 app.post('/register',post,async(req,res)=>{
     try{
-        await User.save(req.body.pat_id, req.body.rep, req.body.age, req.body.gender, req.body.state, req.body.status);
+        console.log(req.body)
+        const user = new User({
+            PatientId: req.body.pat_id,
+            ReportedOn: req.body.rep,
+            Age: req.body.age,
+            Gender: req.body.gender,
+            State: req.body.state,
+            Status: req.body.status
+        })
+        await user.save()
         res.send({
             success:"Successfully Registered"
         })
     }
     catch(e){
+        console.log(e)
+        res.send({
+            error:"Error Occured"
+        })
+    }
+})
+
+app.post('/statedata', post,async(req,res)=>{
+    try{
+        const user = await User.find({State:req.body.state})
+        console.log(user)
+        if(user.length==0){
+            return res.send({
+                error:"No user in DB"
+            })
+        }
+        res.send(user)
+    }catch(e){
+        console.log(e)
         res.send({
             error:"Error Occured"
         })
