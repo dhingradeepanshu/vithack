@@ -122,3 +122,20 @@ ul li:nth-child(5) a:hover .fa {
 .search_globe {
   margin-top: 10%;
 }
+@media screen and (max-width: 600px) {
+  ul {
+    top: 135%;
+    padding-bottom: 5vh;
+  }
+  body {
+    font-size: larger;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact_wrap {
+    width: 60%;
+
+    align-items: center;
+  }
+}
